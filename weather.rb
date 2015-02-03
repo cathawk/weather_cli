@@ -1,9 +1,16 @@
+require 'open_weather'
 class Weather
-	
-	attr_accessor :city
+	def initialize(*args)
+		@location = args[0] ? args[0] : "Victoria, BC"
+		@type = args[1] ? args[1] : "current"
+	end
 
-	def initialize city = nil
-		@city = city ? city : "Victoria, BC"
+	def get
+		if @type == "current"
+			OpenWeather::Current.city(@location)
+		elsif @type == "forecast"
+			OpenWeather::Forecast.city(@location)
+		end
 	end
 
 end

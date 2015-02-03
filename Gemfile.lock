@@ -2,6 +2,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.2.5)
+    json (1.8.2)
+    open-weather (0.10.0)
+      json
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -19,4 +22,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  open-weather
   rspec
