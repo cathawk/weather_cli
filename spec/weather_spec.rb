@@ -16,11 +16,27 @@ describe Weather do
 
 	describe "#get" do
 		context "location not found" do
-		end
-		context "location found" do
-			context "current" do
+			it "returns 404" do
+				VCR.use_cassette("current/not_found") do
+					response = Weather.new("This is not a city", 'current').get
+					expect(response['cod']).to eq '404'
+				end	
 			end
-			context "forecast" do
+		end
+		context "current" do
+			it "returns 200" do
+				VCR.use_cassette("current/victoria") do
+					response = Weather.new("Victoria, BC", 'current').get
+					expect(response['cod']).to eq 200
+				end
+			end
+		end
+		context "forecast" do
+			it "returns 200" do
+				VCR.use_cassette("forecase/victoria") do
+					response = Weather.new("Victoria, BC", 'forecast').get
+					expect(response['cod']).to eq '200'
+				end
 			end
 		end
 	end

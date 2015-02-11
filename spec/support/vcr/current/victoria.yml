@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.openweathermap.org/data/2.5/weather?q=,Victoria,%20BC
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.openweathermap.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 11 Feb 2015 04:13:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Source:
+      - back
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST
+    body:
+      encoding: UTF-8
+      string: |
+        {"coord":{"lon":-123.36,"lat":48.43},"sys":{"type":3,"id":146287,"message":0.0175,"country":"Canada","sunrise":1423668375,"sunset":1423704544},"weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04n"}],"base":"cmc stations","main":{"temp":281.35,"humidity":97,"pressure":1025.7,"temp_min":281.35,"temp_max":281.35},"wind":{"speed":1.26,"deg":221.502},"rain":{"3h":0},"clouds":{"all":56},"dt":1423627889,"id":6174041,"name":"Victoria","cod":200}
+    http_version: 
+  recorded_at: Wed, 11 Feb 2015 04:13:04 GMT
+recorded_with: VCR 2.9.2

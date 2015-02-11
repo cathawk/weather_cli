@@ -13,8 +13,7 @@ class WeatherCL
 			exit 
 		end 
 		build_options
-		lookup_weather
-		#print_weather
+		print_weather Weather.new(@options.location, @options.forecast_type).get
 	end
 
 	private
@@ -53,9 +52,23 @@ class WeatherCL
 			@options
 		end
 
-		def lookup_weather
-			puts @options
-			puts Weather.new(@options.location, @options.forecast_type).get
+		def print_weather weather
+			if weather['cod'].to_i != 200
+				puts "There was an error getting weather"
+				exit
+			else
+				if @options.forecast_type == 'current'
+					puts "\n\nCurrent weather for #{@options.location}\n\n"
+					puts "Condition: #{weather['weather'][0]['description'].
+											split(' ').map{|c| c.capitalize}.join(' ')}"
+					puts "Temperature: #{(weather['main']['temp'].to_i.round(1))} \u00B0C"
+					puts "Pressure: #{(weather['main']['pressure'].to_i / 1000.0)} kPa"
+					puts "Wind: #{weather['wind']['speed']} km/h"
+					# Tomorrow print direction of wind
+					puts "\n\n"
+				elsif @options.forecast_type == 'forcast'
+				end	
+			end 
 		end
 end
 
